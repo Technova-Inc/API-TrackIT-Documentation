@@ -4,7 +4,7 @@ info:
   version: '2.0'
   x-logo:
     url: 'https://github.com/Technova-Inc/API-TrackIT-Documentation/blob/main/track-it-white.png?raw=true'
-    href: 'https://truckersmp.com'
+    href: ''
 servers:
   - url: 'https://api.truckersmp.com/v2'
     description: V2 - Production
