@@ -18,7 +18,7 @@ paths:
           type: integer
         description: PC ID
     get:
-      summary: Fetch detailed PC information
+      summary: Récupérer informations détaillées d'un PC
       tags:
         - PC
       responses:
@@ -46,7 +46,7 @@ paths:
                 required:
                   - error
         '400':
-          description: Bad Request - Missing 'pc' parameter
+          description: Mauvaise requête - il manque le paramètre 'pc'
           content:
             application/json:
               schema:
@@ -78,13 +78,13 @@ paths:
                   - error
                   - message
       operationId: get-pc-details
-      description: Retrieve details about a PC, including its hardware, installed software, and network details.
+      description: Récupérer des informations sur un PC, y compris son matériel, les logiciels installés et les détails du réseau.
 
   '/dashboard':
     get:
-      summary: Fetch system statistics
+      summary: Récupérer les statistiques du système d'information
       tags:
-        - Statistics
+        - Statistiques
       responses:
         '200':
           description: OK
@@ -99,22 +99,22 @@ paths:
                   windows:
                     type: integer
                     example: 15
-                    description: Number of Windows devices
+                    description: nombre d'appareil sous Windows 
                   unix:
                     type: integer
                     example: 8
-                    description: Number of Unix devices
+                    description: nombre d'appareil sous Unix
                   android:
                     type: integer
                     example: 5
-                    description: Number of Android devices
+                    description: nombre d'appareil sous Android
                 required:
                   - error
                   - windows
                   - unix
                   - android
         '404':
-          description: Not Found - No statistics available
+          description: Pas de statisques trouvé
           content:
             application/json:
               schema:
@@ -130,7 +130,7 @@ paths:
                   - error
                   - message
       operationId: get-dashboard-stats
-      description: Retrieve the number of devices running Windows, Unix, and Android.
+      description: Récupérer le nombre d'appareils fonctionnant sous Windows, Unix et Android.
 
 components:
   schemas:
@@ -194,7 +194,7 @@ components:
 
 
 tags:
-  - name: Welcome!
-    description: "Welcome to the TruckersMP API Documentation! If you find something that is either missing or wrong, please don't hesitate to open an Issue or Pull Request with the change on our [GitHub](https://github.com/TruckersMP/API-Documentation)"
+  - name: Bienvenue!
+    description: "Bienvenue sur la documentation de l'API TrackIT !"
     x-traitTag: true
 
