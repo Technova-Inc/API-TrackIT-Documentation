@@ -3,7 +3,7 @@ info:
   title: TrackIT Api
   version: '2.0'
   x-logo:
-    url: 'https://github.com/Technova-Inc/API-TrackIT-Documentation/blob/main/track-it-white.png'
+    url: 'https://github.com/Technova-Inc/API-TrackIT-Documentation/blob/main/track-it-white.png?raw=true'
     href: 'https://truckersmp.com'
 servers:
   - url: 'https://api.truckersmp.com/v2'
