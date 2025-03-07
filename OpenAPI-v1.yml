@@ -1,13 +1,13 @@
 openapi: 3.1.0
 info:
   title: TrackIT Api
-  version: '2.0'
+  version: '1.0'
   x-logo:
     url: 'https://github.com/Technova-Inc/API-TrackIT-Documentation/blob/main/track-it-logo.png?raw=true'
     href: ''
 servers:
-  - url: 'https://api.truckersmp.com/v2'
-    description: V2 - Production
+  - url: 'http://10.29.126.31/api-track-it'
+    description: V1 - Production
 paths:
   '/Consultation?pc={nomPc}':
     parameters:
@@ -62,7 +62,7 @@ paths:
                   - error
                   - message
         '404':
-          description: Not Found - PC Not Found
+          description: PC non trouvé
           content:
             application/json:
               schema:
@@ -73,7 +73,7 @@ paths:
                     default: true
                   message:
                     type: string
-                    example: "Unable to find pc with that ID."
+                    example: "Impossible de trouver un PC avec cet identifiant."
                 required:
                   - error
                   - message
@@ -125,7 +125,7 @@ paths:
                     default: true
                   message:
                     type: string
-                    example: "No statistics found."
+                    example: "Aucune statistique n'a été trouvée."
                 required:
                   - error
                   - message
