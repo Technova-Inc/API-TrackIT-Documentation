@@ -1,0 +1,210 @@
+openapi: 3.1.0
+info:
+  title: TrackIT Api
+  version: '2.0'
+  x-logo:
+    url: 'https://truckersmp.com/assets/img/truckersmp-logo-black.png'
+    href: 'https://truckersmp.com'
+servers:
+  - url: 'https://api.truckersmp.com/v2'
+    description: V2 - Production
+paths:
+  '/Consultation?pc={nomPc}':
+    parameters:
+      - name: nomPc
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: PC ID
+    get:
+      summary: Fetch detailed PC information
+      tags:
+        - PC
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: boolean
+                    default: false
+                    description: If any error occurred during the request
+                  pc:
+                    $ref: '#/components/schemas/PcInfo'
+                  software:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SoftwareInfo'
+                  network:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/NetworkInfo'
+                required:
+                  - error
+        '400':
+          description: Bad Request - Missing 'pc' parameter
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: boolean
+                    default: true
+                  message:
+                    type: string
+                    example: "Le paramètre 'pc' est requis dans l'URL."
+                required:
+                  - error
+                  - message
+        '404':
+          description: Not Found - PC Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: boolean
+                    default: true
+                  message:
+                    type: string
+                    example: "Unable to find pc with that ID."
+                required:
+                  - error
+                  - message
+      operationId: get-pc-details
+      description: Retrieve details about a PC, including its hardware, installed software, and network details.
+
+  '/dashboard':
+    get:
+      summary: Fetch system statistics
+      tags:
+        - Statistics
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: boolean
+                    default: false
+                  windows:
+                    type: integer
+                    example: 15
+                    description: Number of Windows devices
+                  unix:
+                    type: integer
+                    example: 8
+                    description: Number of Unix devices
+                  android:
+                    type: integer
+                    example: 5
+                    description: Number of Android devices
+                required:
+                  - error
+                  - windows
+                  - unix
+                  - android
+        '404':
+          description: Not Found - No statistics available
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: boolean
+                    default: true
+                  message:
+                    type: string
+                    example: "No statistics found."
+                required:
+                  - error
+                  - message
+      operationId: get-dashboard-stats
+      description: Retrieve the number of devices running Windows, Unix, and Android.
+
+components:
+  schemas:
+    PcInfo:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 123
+        name:
+          type: string
+          example: "PC-123"
+        cpu:
+          type: string
+          example: "Intel Core i7"
+        ram:
+          type: string
+          example: "16GB"
+        storage:
+          type: string
+          example: "512GB SSD"
+      required:
+        - id
+        - name
+        - cpu
+        - ram
+        - storage
+
+    SoftwareInfo:
+      type: object
+      properties:
+        name:
+          type: string
+          example: "Google Chrome"
+        version:
+          type: string
+          example: "99.0.1234.56"
+      required:
+        - name
+        - version
+
+    NetworkInfo:
+      type: object
+      properties:
+        ip:
+          type: string
+          example: "192.168.1.100"
+        mac:
+          type: string
+          example: "00:1A:2B:3C:4D:5E"
+        status:
+          type: string
+          example: "Connected"
+      required:
+        - ip
+        - mac
+        - status
+
+
+
+
+
+tags:
+  - name: Welcome!
+    description: "Welcome to the TruckersMP API Documentation! If you find something that is either missing or wrong, please don't hesitate to open an Issue or Pull Request with the change on our [GitHub](https://github.com/TruckersMP/API-Documentation)"
+    x-traitTag: true
+  - name: API SDK
+    x-traitTag: true
+    description: |
+      We provide two different SDK libraries as of now:
+      - [Feature-rich client (PHP)](https://github.com/TruckersMP/API-Client)
+      - [Type definitions (TypeScript)](https://github.com/TruckersMP/API-Types)
+  - name: Players
+  - name: Servers
+  - name: Events
+  - name: Virtual Trucking Companies
+  - name: Game Information
