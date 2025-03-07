@@ -90,7 +90,8 @@ paths:
                   response:
                     type: array
                     items:
-                      $ref: '#/components/schemas/Ban'
+                      id: int
+                      nom: string
                 required:
                   - error
         '404':
