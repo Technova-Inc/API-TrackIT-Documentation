@@ -9,6 +9,63 @@ servers:
   - url: 'http://10.29.126.31/api-track-it'
     description: V1 - Production
 paths:
+'/ListPC':
+    get:
+      summary: Récupérer la liste des PC du système d'information
+      tags:
+        - PC
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: boolean
+                    default: false
+                    description: En cas d'erreur durant la requête'
+                  listePC:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/PcInfo'
+                required:
+                  - error
+        '400':
+          description: Mauvaise requête - il manque le paramètre 'pc'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: boolean
+                    default: true
+                  message:
+                    type: string
+                    example: "Le paramètre 'pc' est requis dans l'URL."
+                required:
+                  - error
+                  - message
+        '404':
+          description: PC non trouvé
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: boolean
+                    default: true
+                  message:
+                    type: string
+                    example: "Impossible de trouver un PC avec cet identifiant."
+                required:
+                  - error
+                  - message
+      operationId: get-pc-details
+      description: Récupérer des informations sur un PC, y compris son matériel, les logiciels installés et les détails du réseau.
   '/Consultation?pc={nomPc}':
     parameters:
       - name: nomPc
@@ -122,7 +179,7 @@ paths:
                 properties:
                   error:
                     type: boolean
-                    default: true
+                    default: false
                   message:
                     type: string
                     example: "Aucune statistique n'a été trouvée."
@@ -189,12 +246,7 @@ components:
         - mac
         - status
 
-
-
-
-
 tags:
   - name: Bienvenue!
     description: "Bienvenue sur la documentation de l'API TrackIT !"
     x-traitTag: true
-
