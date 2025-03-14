@@ -138,7 +138,7 @@ paths:
       operationId: get-pc-details
       description: Récupérer des informations sur un PC, y compris son matériel, les logiciels installés et les détails du réseau.
 
-  '/dashboardq':
+  '/dashboard':
     get:
       summary: Récupérer les statistiques du système d'information
       tags:
