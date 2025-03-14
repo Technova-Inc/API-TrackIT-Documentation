@@ -9,7 +9,7 @@ servers:
   - url: 'http://10.29.126.31/api-track-it'
     description: V1 - Production
 paths:
-'/ListPC':
+  '/ListPC':
     get:
       summary: Récupérer la liste des PC du système d'information
       tags:
