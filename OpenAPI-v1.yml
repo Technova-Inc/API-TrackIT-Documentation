@@ -29,7 +29,7 @@ paths:
                   listePC:
                     type: array
                     items:
-                      $ref: '#/components/schemas/PcInfo'
+                      $ref: '#/components/schemas/listPC'
                 required:
                   - error
         '400':
@@ -246,6 +246,22 @@ components:
         - ip
         - mac
         - status
+    listPC:
+      type: object
+      properties:
+        nom:
+          type: string
+          example: "PC-123"
+        lastdate:
+          type: date
+          example: "01/01/1970"
+        lastecome:
+          type: date
+          example: "01/01/1970"
+      required:
+        - nom
+        - lastedate
+        - lastecom
 
 tags:
   - name: Bienvenue!
