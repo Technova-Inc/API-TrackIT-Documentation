@@ -66,6 +66,7 @@ paths:
                   - message
       operationId: get-pc-details
       description: Récupérer des informations sur un PC, y compris son matériel, les logiciels installés et les détails du réseau.
+  
   '/Consultation?pc={nomPc}':
     parameters:
       - name: nomPc
