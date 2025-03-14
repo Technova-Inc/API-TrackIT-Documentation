@@ -4,7 +4,7 @@ info:
   version: '1.0'
   x-logo:
     url: 'https://github.com/Technova-Inc/API-TrackIT-Documentation/blob/main/track-it-logo-v1.png?raw=true'
-    href: 'http://10.29.126.31/html/track-it/#/dashboard'
+    href: 'http://10.29.126.31'
 servers:
   - url: 'http://10.29.126.31/api-track-it'
     description: V1 - Production
