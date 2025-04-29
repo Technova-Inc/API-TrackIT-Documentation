@@ -1,2 +1,2 @@
 # Documentation de l'API TrackIT
-Documentation rédigé par @Rundredoffi & MarinCD
+Documentation rédigé par @Rundredoffi & @MarinCD
